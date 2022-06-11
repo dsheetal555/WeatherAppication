@@ -1,0 +1,21 @@
+<form [formGroup]="stateForm">
+    <mat-form-field appearance="fill" class="citySearch">
+      <mat-label>States Group</mat-label>
+      <input type="text"
+             matInput
+             formControlName="stateGroup"
+             required
+             [matAutocomplete]="autoGroup"  #serachInput (keyup.enter)="onKey(serachInput.value)">
+        <mat-autocomplete #autoGroup="matAutocomplete">
+          <mat-optgroup *ngFor="let group of cityGroupOptions | async" [label]="group.letter">
+            <mat-option *ngFor="let name of group.names" [value]="name">
+              {{name}}
+            </mat-option>
+        </mat-optgroup>
+      </mat-autocomplete>
+    </mat-form-field>
+    <h3 *ngIf="selectedStates"></h3>
+  </form>
+
+  <div id="weatherapi-weather-widget-4"></div><script type='text/javascript' src='https://www.weatherapi.com/weather/widget.ashx?loc=1107188&wid=4&tu=2&div=weatherapi-weather-widget-4' async></script><noscript><a href="https://www.weatherapi.com/weather/q/bangalore-city-1107188" alt="Hour by hour Bangalore City weather">10 day hour by hour Bangalore City weather</a></noscript>
+ 
